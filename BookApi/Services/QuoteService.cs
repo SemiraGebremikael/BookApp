@@ -38,8 +38,7 @@ public class QuoteService : IQuoteService
     {
         var quote = await _repository.GetByIdAsync(id);
 
-        if (quote == null)
-            return false;
+        if (quote == null) return false;
 
         await _repository.DeleteAsync(quote);
 

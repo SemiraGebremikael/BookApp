@@ -38,9 +38,7 @@ public class AuthService : IAuthService
 
     public async Task<string?> LoginAsync(LoginDto dto)
     {
-        var user =
-            await _repository.GetByUsernameAsync(
-                dto.Name);
+        var user =  await _repository.GetByUsernameAsync(  dto.Name);
 
         if (user == null)
             return null;
@@ -50,8 +48,7 @@ public class AuthService : IAuthService
                 dto.Password,
                 user.Password);
 
-        if (!valid)
-            return null;
+        if (!valid)  return null;
 
         var claims = new[]
         {
@@ -59,13 +56,9 @@ public class AuthService : IAuthService
         };
 
         var key = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(
-                _configuration["Jwt:Key"]!));
+            Encoding.UTF8.GetBytes( _configuration["Jwt:Key"]!));
 
-        var credentials =
-            new SigningCredentials(
-                key,
-                SecurityAlgorithms.HmacSha256);
+        var credentials = new SigningCredentials( key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
             issuer: _configuration["Jwt:Issuer"],

@@ -23,6 +23,17 @@ public class BooksController : ControllerBase
         return Ok(await _service.GetAllAsync());
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var book = await _service.GetByIdAsync(id);
+
+        if (book == null)
+            return NotFound();
+
+        return Ok(book);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create(
         CreateBookDto dto)
@@ -31,9 +42,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(
-        int id,
-        UpdateBookDto dto)
+    public async Task<IActionResult> Update( int id, UpdateBookDto dto)
     {
         var result =
             await _service.UpdateAsync(id, dto);
@@ -44,9 +53,9 @@ public class BooksController : ControllerBase
         return Ok(result);
     }
 
+
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(
-        int id)
+    public async Task<IActionResult> Delete( int id)
     {
         var deleted =
             await _service.DeleteAsync(id);

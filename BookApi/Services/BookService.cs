@@ -19,6 +19,11 @@ public class BookService : IBookService
         return await _repository.GetAllAsync();
     }
 
+    public async Task<Book?> GetByIdAsync(int id)
+    {
+        return await _repository.GetByIdAsync(id);
+    }
+
     public async Task<Book> CreateAsync(
         CreateBookDto dto)
     {
@@ -42,15 +47,13 @@ public class BookService : IBookService
     {
         var book = await _repository.GetByIdAsync(id);
 
-        if (book == null)
-            return null;
+        if (book == null)  return null;
 
         book.Title = dto.Title;
         book.Author = dto.Author;
         book.PublishDate = dto.PublishDate;
 
         await _repository.UpdateAsync(book);
-
         await _repository.SaveChangesAsync();
 
         return book;
@@ -60,8 +63,7 @@ public class BookService : IBookService
     {
         var book = await _repository.GetByIdAsync(id);
 
-        if (book == null)
-            return false;
+        if (book == null)  return false;
 
         await _repository.DeleteAsync(book);
 

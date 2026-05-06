@@ -24,15 +24,13 @@ public class QuotesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(
-        CreateQuoteDto dto)
+    public async Task<IActionResult> Create( CreateQuoteDto dto)
     {
         return Ok(await _service.CreateAsync(dto));
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(
-        int id)
+    public async Task<IActionResult> Delete(  int id)
     {
         var deleted =
             await _service.DeleteAsync(id);
