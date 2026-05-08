@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { ApiService } from '../../api/api-service';
-import { Observable } from 'rxjs';
+import { BookDto } from '../../models/books/book.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +10,24 @@ export class BookService {
 
   constructor(private api: ApiService) {}
 
-  // getAllBooks() {
-  //   return this.api.get('books');
-  // }
-
-  getBookById(id: number) :Observable<any> {
-    return this.api.get<any>(`books/${id}`);
+  getAllBooks() {
+    return this.api.getBooks();
   }
 
-  // createBook(data: any) {
-  //   return this.api.post('books', data);
-  // }
+  getBookById(id: number) {
+    return this.api.getBookById(id);
+  }
 
-  // updateBook(id: number, data: any) {
-  //   return this.api.put(`books/${id}`, data);
-  // }
+  createBook(data: BookDto) {
+    return this.api.createBook(data);
+  }
 
-  // deleteBook(id: number) {
-  //   return this.api.delete(`books/${id}`);
-  // }
+  updateBook(id: number, data: BookDto) {
+    return this.api.updateBook(id, data);
+  }
+
+  deleteBook(id: number) {
+    return this.api.deleteBook(id);
+  }
+
 }
