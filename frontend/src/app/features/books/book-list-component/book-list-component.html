@@ -34,9 +34,11 @@
             Redigera
           </button>
 
-          <button class="btn btn-danger" (click)="delete(b.id)">
-            Radera
-          </button>
+          <app-delete-book
+            [bookId]="b.id"
+            [bookTitle]="b.title"
+            (deleted)="handleDelete($event)">
+          </app-delete-book>
 
         </div>
 

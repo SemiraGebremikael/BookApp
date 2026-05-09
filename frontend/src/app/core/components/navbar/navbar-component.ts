@@ -1,0 +1,26 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { AuthService } from '../../../core/services/authService/auth-services';
+
+@Component({
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterLinkActive],
+  templateUrl: './navbar-component.html',
+})
+export class NavbarComponent {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+}

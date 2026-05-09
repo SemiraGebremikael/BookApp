@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <i class="fa-solid fa-book-open me-2"></i>
+      BookApp
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login <i class="fa-solid fa-right-to-bracket"></i></a>
+        </li>
+        <!-- <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">Register <i class="fa-solid fa-user-plus"></i></a>
+        </li> -->
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="/books" routerLinkActive="active">Books <i class="fa-solid fa-book"></i></a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <button class="btn btn-outline-light btn-sm ms-2" (click)="logout()">
+            Logout <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

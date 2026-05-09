@@ -1,14 +1,15 @@
 
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../core/services/booksService/book-service';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { BookDto } from '../../../core/models/books/book.dto';
 import { CommonModule } from '@angular/common';
+import { DeleteBookComponent } from '../delete-book-component/delete-book-component';
 
 @Component({
   selector: 'app-book-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DeleteBookComponent],
 
   templateUrl: './book-list-component.html',
 })
@@ -39,20 +40,9 @@ export class BookListComponent implements OnInit {
       });
   }
 
-  delete(id: number) {
-    if (confirm('Är du säker på att du vill radera denna bok?')) {
-      this.bookService.deleteBook(id)
-        .subscribe({
-          next: () => {
-            this.message = 'Bok raderad framgångsrikt!';
-            this.loadBooks();
-          },
-          error: (error) => {
-            console.error(error);
-            this.message = 'Fel vid radering av bok';
-          }
-        });
-    }
+  handleDelete(id: number) {
+    this.message = 'Bok raderad framgångsrikt!';
+    this.loadBooks();
   }
 
   edit(id: number) {
