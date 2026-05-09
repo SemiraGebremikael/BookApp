@@ -1,17 +1,36 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { BookListComponent } from "./features/books/book-list-component/book-list-component";
-import { CreateBookComponent } from "./features/books/create-book-component/create-book-component";
-import { EditBookComponent } from "./features/books/edit-book-component/edit-book-component";
-import { LoginComponent } from "./features/auth/login/login-component";
-import { RegisterComponent } from "./features/auth/register/register-component";
+import { CommonModule } from '@angular/common';
+import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from './core/services/authService/auth-services';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, BookListComponent, CreateBookComponent, EditBookComponent, LoginComponent, RegisterComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('frontend');
+  protected readonly isLoggedIn = signal(false);
+
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.isLoggedIn.set(this.authService.isLoggedIn());
+
+    this.router.events.subscribe(() => {
+      this.isLoggedIn.set(this.authService.isLoggedIn());
+    });
+
+    window.addEventListener('storage', () => {
+      this.isLoggedIn.set(this.authService.isLoggedIn());
+    });
+  }
+
+  protected logout() {
+    this.authService.logout();
+    this.isLoggedIn.set(false);
+    this.router.navigate(['/login']);
+  }
 }
