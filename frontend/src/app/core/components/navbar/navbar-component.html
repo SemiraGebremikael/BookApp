@@ -20,6 +20,10 @@
           <a class="nav-link" routerLink="/books" routerLinkActive="active">Books <i class="fa-solid fa-book"></i></a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="/quotes" routerLinkActive="active">Mina citat <i class="fa-solid fa-quote-left"></i></a>
+        </li>
+
+        <li class="nav-item" *ngIf="isLoggedIn()">
           <button class="btn btn-outline-light btn-sm ms-2" (click)="logout()">
             Logout <i class="fa-solid fa-right-from-bracket"></i>
           </button>
