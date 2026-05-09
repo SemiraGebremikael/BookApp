@@ -1,5 +1,4 @@
 <div class="container mt-4">
-
   <div class="row mb-4">
     <div class="col-12">
       <button class="btn btn-success" (click)="create()">
@@ -7,45 +6,31 @@
       </button>
     </div>
   </div>
-
   <div class="row">
-
     <div
       class="col-12 col-md-6 col-lg-4 mb-3"
       *ngFor="let b of books">
-
       <div class="card h-100 shadow">
-
         <div class="card-body">
-
           <h5>
             {{ b.title }}
           </h5>
-
           <p>
             {{ b.author }}
           </p>
-
           <p class="text-muted small">
             Publicerad: {{ b.publishDate | date: 'yyyy-MM-dd' }}
           </p>
-
           <button class="btn btn-warning me-2" (click)="edit(b.id)">
             Redigera
           </button>
-
           <app-delete-book
             [bookId]="b.id"
             [bookTitle]="b.title"
             (deleted)="handleDelete($event)">
           </app-delete-book>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </div>
