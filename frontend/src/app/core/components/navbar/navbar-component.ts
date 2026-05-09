@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { AuthService } from '../../../core/services/authService/auth-services';
+import { ThemeToggleComponent } from '../../services/theme/theme-toggle.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, ThemeToggleComponent],
   templateUrl: './navbar-component.html',
+  styleUrls: ['./navbar-component.scss'],
 })
 export class NavbarComponent {
   constructor(
@@ -24,3 +26,4 @@ export class NavbarComponent {
     this.router.navigate(['/login']);
   }
 }
+
