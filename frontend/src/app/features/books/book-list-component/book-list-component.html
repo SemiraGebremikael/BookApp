@@ -1,5 +1,13 @@
 <div class="container mt-4">
 
+  <div class="row mb-4">
+    <div class="col-12">
+      <button class="btn btn-success" (click)="create()">
+                + Lägg till ny bok
+      </button>
+    </div>
+  </div>
+
   <div class="row">
 
     <div
@@ -18,12 +26,16 @@
             {{ b.author }}
           </p>
 
+          <p class="text-muted small">
+            Publicerad: {{ b.publishDate | date: 'yyyy-MM-dd' }}
+          </p>
+
           <button class="btn btn-warning me-2" (click)="edit(b.id)">
-            Edit
+            Redigera
           </button>
 
           <button class="btn btn-danger" (click)="delete(b.id)">
-            Delete
+            Radera
           </button>
 
         </div>

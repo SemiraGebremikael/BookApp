@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class BookListComponent implements OnInit {
   books: BookDto[] = [];
+  message = '';
 
   constructor(
     private bookService: BookService,
@@ -26,12 +27,32 @@ export class BookListComponent implements OnInit {
 
   loadBooks() {
     this.bookService.getAllBooks()
-      .subscribe(data => this.books = data);
+      .subscribe({
+        next: (data) => {
+          this.books = data;
+          this.message = '';
+        },
+        error: (error) => {
+          console.error(error);
+          this.message = 'Fel vid hämtning av böcker';
+        }
+      });
   }
 
   delete(id: number) {
-    this.bookService.deleteBook(id)
-      .subscribe(() => this.loadBooks());
+    if (confirm('Är du säker på att du vill radera denna bok?')) {
+      this.bookService.deleteBook(id)
+        .subscribe({
+          next: () => {
+            this.message = 'Bok raderad framgångsrikt!';
+            this.loadBooks();
+          },
+          error: (error) => {
+            console.error(error);
+            this.message = 'Fel vid radering av bok';
+          }
+        });
+    }
   }
 
   edit(id: number) {
