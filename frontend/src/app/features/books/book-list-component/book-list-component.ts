@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../core/services/booksService/book-service';
 import { Router, RouterOutlet } from '@angular/router';
 import { BookDto } from '../../../core/models/books/book.dto';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 
   templateUrl: './book-list-component.html',
 })
-export class BookListComponent {
+export class BookListComponent implements OnInit {
   books: BookDto[] = [];
 
   constructor(

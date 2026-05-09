@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-component',
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './register-component.html',
   styleUrl: './register-component.scss',
@@ -14,11 +15,11 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
 
   model: RegisterDto = {
-    username: '',
+    name: '',
     password: ''
   };
 
-  constructor(
+    constructor(
     private authService: AuthService,
     private router: Router
   ) {}
@@ -30,17 +31,15 @@ export class RegisterComponent {
 
         next: () => {
 
-          alert('User created');
+          alert('Account created');
 
           this.router.navigate(['/login']);
         },
 
-        error: (error) => {
-          console.log(error);
+        error: () => {
+          alert('Something went wrong');
         }
       });
   }
 }
-
-
 

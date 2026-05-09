@@ -1,4 +1,4 @@
 export interface RegisterDto {
-  username: string;
+  name: string;
   password: string;
 }

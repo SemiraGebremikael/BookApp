@@ -15,18 +15,15 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(data: RegisterDto) {
-    return this.http.post(
-      `${this.apiUrl}/register`,
-      data
+      return this.http.post(  `${this.apiUrl}/register`, data
     );
   }
 
   login(data: LoginDto) {
-    return this.http.post<{ token: string }>(
-      `${this.apiUrl}/login`,
-      data
+    return this.http.post<{ token: string }>( `${this.apiUrl}/login`, data
     );
   }
+
 
   saveToken(token: string) {
     localStorage.setItem('token', token);

@@ -1,47 +1,58 @@
 
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoginDto } from '../../../core/models/auth/LoginDto';
 import { AuthService } from '../../../core/services/authService/auth-services';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule],
+  standalone: true, 
+  imports: [FormsModule,RouterLink, FormsModule,CommonModule,],
   templateUrl: './login-component.html',
 
 })
 export class LoginComponent {
 
   model: LoginDto = {
-    username: '',
+    name: '',
     password: ''
   };
+
+  message: string = '';
 
   constructor(
     private authService: AuthService,
     private router: Router
   ) {}
 
-  login() {
+ login() {
 
-    this.authService.login(this.model)
-      .subscribe({
+  console.log(this.model);
 
-        next: (response) => {
+  this.authService.login(this.model)
+    .subscribe({
+      next: (response) => {
 
-          this.authService
-            .saveToken(response.token);
+        console.log(response);
 
-          this.router.navigate(['/']);
-        },
+        localStorage.setItem(
+          'token',
+          response.token
+        );
 
-        error: (error) => {
-          console.log(error);
-          alert('Wrong username or password');
-        }
-      });
-  }
+        this.message = 'Login successful!';
+        this.router.navigate(['/books']);
+      },
+
+      error: (error) => {
+        console.log(error);
+        this.message = 'Login failed: ' + (error.error?.message || 'Invalid username or password');
+      }
+    });
+}
+
+
 }

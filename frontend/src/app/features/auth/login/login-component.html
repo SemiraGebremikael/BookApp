@@ -1,29 +1,63 @@
-<div class="container mt-5">
+<div class="container">
 
-  <div class="card p-4">
+  <div class="row justify-content-center">
 
-    <h2 class="mb-3">
-      Login
-    </h2>
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5">
 
-    <input
-      class="form-control mb-2"
-      placeholder="Username"
-      [(ngModel)]="model.username">
+      <div class="card shadow p-4 mt-5">
 
-    <input
-      class="form-control mb-3"
-      type="password"
-      placeholder="Password"
-      [(ngModel)]="model.password">
+        <h2 class="text-center mb-4">
+          Login
+        </h2>
 
-    <button
-      class="btn btn-primary"
-      (click)="login()">
+        <!-- MESSAGE -->
+        <div *ngIf="message" class="alert alert-info mb-3">
+          {{ message }}
+        </div>
 
-      Login
+        <!-- USERNAME -->
+        <input
+          class="form-control mb-3"
+          type="text"
+          placeholder="Username"
+          [(ngModel)]="model.name">
 
-    </button>
+        <!-- PASSWORD -->
+        <input
+          class="form-control mb-3"
+          type="password"
+          placeholder="Password"
+          [(ngModel)]="model.password">
+
+        <!-- LOGIN BUTTON -->
+        <button
+          class="btn btn-primary w-100"
+          (click)="login()">
+
+          Login
+
+        </button>
+
+        <!-- REGISTER LINK -->
+        <div class="text-center mt-3">
+
+          <span>
+            Don't have an account?
+          </span>
+
+          <a
+            routerLink="/register"
+            class="ms-1 text-decoration-none">
+
+            Create account
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 

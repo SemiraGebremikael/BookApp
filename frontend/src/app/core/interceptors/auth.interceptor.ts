@@ -5,12 +5,11 @@ export const authInterceptor: HttpInterceptorFn =
 
   const token = localStorage.getItem('token');
 
-  const isAuthRequest =
+  const isAuthRoute =
     req.url.includes('/auth/login') ||
     req.url.includes('/auth/register');
 
-  if (token && !isAuthRequest) {
-
+  if (token && !isAuthRoute) {
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`
