@@ -29,6 +29,12 @@ public class QuoteRepository : IQuoteRepository
         await _context.Quotes.AddAsync(quote);
     }
 
+    public async Task UpdateAsync(Quote quote)
+    {
+        _context.Quotes.Update(quote);
+        await Task.CompletedTask;
+    }
+
     public async Task DeleteAsync(Quote quote)
     {
         _context.Quotes.Remove(quote);

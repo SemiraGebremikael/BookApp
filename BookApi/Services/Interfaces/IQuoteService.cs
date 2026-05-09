@@ -9,5 +9,7 @@ public interface IQuoteService
 
     Task<Quote> CreateAsync(CreateQuoteDto dto);
 
+    Task<Quote?> UpdateAsync(int id, UpdateQuoteDto dto);
+
     Task<bool> DeleteAsync(int id);
 }

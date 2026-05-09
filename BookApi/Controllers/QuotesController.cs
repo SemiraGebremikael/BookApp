@@ -29,11 +29,20 @@ public class QuotesController : ControllerBase
         return Ok(await _service.CreateAsync(dto));
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(  int id)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, UpdateQuoteDto dto)
     {
-        var deleted =
-            await _service.DeleteAsync(id);
+        var updated = await _service.UpdateAsync(id, dto);
+        if (updated == null)
+            return NotFound();
+
+        return Ok(updated);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var deleted = await _service.DeleteAsync(id);
 
         if (!deleted)
             return NotFound();
