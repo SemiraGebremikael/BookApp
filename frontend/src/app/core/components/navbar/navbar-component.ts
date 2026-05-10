@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { AuthService } from '../../../core/services/authService/auth-services';
-import { ThemeToggleComponent } from '../../services/theme/theme-toggle.component';
+import { ThemeToggleComponent } from '../../../features/theme/theme-toggle.component';
 
 @Component({
   selector: 'app-navbar',
