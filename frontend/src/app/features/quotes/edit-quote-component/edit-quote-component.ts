@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuoteService, UpdateQuoteDto } from '../../../core/services/quotesService/quote-service';
+import { QuoteService } from '../../../core/services/quotesService/quote-service';
 import { QuoteDto } from '../../../core/models/quotes/quote.dto';
 
 @Component({

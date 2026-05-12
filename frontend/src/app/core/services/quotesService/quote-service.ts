@@ -1,37 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { QuoteDto } from '../../models/quotes/quote.dto';
+import { ApiService } from '../../api/api-service';
+import { CreateQuoteDto, UpdateQuoteDto } from '../../models/quotes/quote.dto';
 
-export interface CreateQuoteDto {
-  text: string;
-}
 
-export interface UpdateQuoteDto {
-  text: string;
-}
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuoteService {
-  private baseUrl = 'https://localhost:7161/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private api: ApiService) {}
 
   getAllQuotes() {
-    return this.http.get<QuoteDto[]>(`${this.baseUrl}/quotes`);
+    return this.api.getAllQuotes();
   }
 
-  createQuote(dto: CreateQuoteDto) {
-    return this.http.post<QuoteDto>(`${this.baseUrl}/quotes`, dto);
+  createQuote(data: CreateQuoteDto) {
+    return  this.api.createQuote(data);
   }
 
   updateQuote(id: number, dto: UpdateQuoteDto) {
-    return this.http.put<QuoteDto>(`${this.baseUrl}/quotes/${id}`, dto);
+    return this.api.updateQuote(id, dto);
   }
 
   deleteQuote(id: number) {
-    return this.http.delete(`${this.baseUrl}/quotes/${id}`);
+    return this.api.deleteQuote(id);
   }
 }
 

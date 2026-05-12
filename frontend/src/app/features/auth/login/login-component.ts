@@ -20,12 +20,10 @@ export class LoginComponent {
     name: '',
     password: ''
   };
-
   message: string = '';
 
   private authService = inject(AuthService);
   private router = inject(Router);  
-
 
 login() {
   this.authService.login(this.model)

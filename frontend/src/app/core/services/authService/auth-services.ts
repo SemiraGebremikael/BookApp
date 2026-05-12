@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterDto } from '../../models/auth/register.dto';
 import { LoginDto } from '../../models/auth/LoginDto';
+import { ApiService } from '../../api/api-service';
 
 
 @Injectable({
@@ -9,19 +10,15 @@ import { LoginDto } from '../../models/auth/LoginDto';
 })
 export class AuthService {
 
-  private apiUrl =
-    'https://localhost:7161/api/auth';
-
-  constructor(private http: HttpClient) {}
+  constructor(private api: ApiService) {}
+  
 
   register(data: RegisterDto) {
-      return this.http.post(  `${this.apiUrl}/register`, data
-    );
+      return this.api.register(data);
   }
 
   login(data: LoginDto) {
-    return this.http.post<{ token: string }>( `${this.apiUrl}/login`, data
-    );
+    return this.api.login(data);    
   }
 
 
