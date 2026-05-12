@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BookService } from '../../../core/services/booksService/book-service';
@@ -18,11 +18,9 @@ message = '';
 bookId: number = 0;
 todayDate = new Date().toISOString().split('T')[0];
 
-constructor(
-private bookService: BookService,
-private router: Router,
-private route: ActivatedRoute
-) {}
+private bookService = inject(BookService);
+private router = inject(Router);  
+private route = inject(ActivatedRoute);
 
 ngOnInit() {
 this.route.params.subscribe(params => {

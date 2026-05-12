@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookService } from '../../../core/services/booksService/book-service';
 
@@ -16,7 +16,7 @@ export class DeleteBookComponent {
   isDeleting = false;
   errorMessage = '';
 
-  constructor(private bookService: BookService) {}
+  private bookService = inject(BookService);
 
   remove() {
     if (!confirm(`Är du säker på att du vill radera "${this.bookTitle}"?`)) {

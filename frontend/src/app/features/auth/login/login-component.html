@@ -1,64 +1,39 @@
 <div class="container">
-
   <div class="row justify-content-center">
-
     <div class="col-12 col-sm-10 col-md-8 col-lg-5">
-
       <div class="card shadow p-4 mt-5">
-
         <h2 class="text-center mb-4">
-          Login
+          Logga in
         </h2>
-
-        <!-- MESSAGE -->
         <div *ngIf="message" class="alert alert-info mb-3">
           {{ message }}
         </div>
-
-        <!-- USERNAME -->
         <input
           class="form-control mb-3"
           type="text"
-          placeholder="Username"
+          placeholder="Användarnamn"
           [(ngModel)]="model.name">
-
-        <!-- PASSWORD -->
         <input
           class="form-control mb-3"
           type="password"
-          placeholder="Password"
+          placeholder="Lösenord"
           [(ngModel)]="model.password">
-
-        <!-- LOGIN BUTTON -->
         <button
           class="btn btn-primary w-100"
           (click)="login()">
-
-          Login
-
+          Logga in
         </button>
-
-        <!-- REGISTER LINK -->
         <div class="text-center mt-3">
-
           <span>
-            Don't have an account?
+            Har du inget konto?
           </span>
-
           <a
             routerLink="/register"
             class="ms-1 text-decoration-none">
-
-            Create account
-
+            Skapa konto
           </a>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </div>

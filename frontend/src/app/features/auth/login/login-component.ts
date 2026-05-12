@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginDto } from '../../../core/models/auth/LoginDto';
@@ -23,32 +23,22 @@ export class LoginComponent {
 
   message: string = '';
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  private authService = inject(AuthService);
+  private router = inject(Router);  
 
- login() {
 
-  console.log(this.model);
-
+login() {
   this.authService.login(this.model)
     .subscribe({
       next: (response) => {
-
-        console.log(response);
-
         localStorage.setItem(
           'token',
           response.token
         );
-
         this.message = 'Login successful!';
         this.router.navigate(['/books']);
       },
-
       error: (error) => {
-        console.log(error);
         this.message = 'Login failed: ' + (error.error?.message || 'Invalid username or password');
       }
     });

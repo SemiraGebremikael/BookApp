@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { ThemeToggleComponent } from '../../features/theme/theme-toggle.component';
@@ -12,11 +12,10 @@ import { AuthService } from '../services/authService/auth-services';
   styleUrls: ['./navbar-component.scss'],
 })
 export class NavbarComponent {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
-
+  
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  
   isLoggedIn() {
     return this.authService.isLoggedIn();
   }

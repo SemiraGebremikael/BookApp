@@ -46,11 +46,56 @@ html[data-theme='dark'] {
   --shadow-lg: rgba(0, 0, 0, 0.6);
 }
 
-html[data-theme='dark'] input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: brightness(0);
+html[data-theme='dark'] {
+  .form-control,
+  textarea,
+  input {
+    color: #fff !important;
+    background-color: #4b586a !important;
+  }
+
+  .form-control:focus,
+  textarea:focus,
+  input:focus {
+    color: #fff !important;
+    background-color: #4b586a !important;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: brightness(0);
+  }
+
+  .card,
+  .card-body {
+    background-color: #0f1a2b !important;
+    color: #fff !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .card h5,
+  .card p,
+  .card .text-muted {
+    color: #e5e7eb !important;
+  }
+
+  .btn-warning {
+    background-color: #f59e0b !important;
+    border-color: #f59e0b !important;
+    color: #000 !important;
+  }
+
+  .btn-secondary {
+    background-color: #374151 !important;
+    border-color: #374151 !important;
+    color: #fff !important;
+  }
+
+  .btn-success {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+    color: #fff !important;
+  }
 }
-
-
 
 body {
   background: linear-gradient(135deg, var(--bg) 0%, var(--surface-soft) 100%);
@@ -130,6 +175,8 @@ li {
   font-weight: 700;
   letter-spacing: 0.02em;
   color: #ffffff !important;
+  cursor: pointer;
+
 }
 
 .navbar-brand:hover {

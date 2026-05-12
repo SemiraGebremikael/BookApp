@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { QuoteService } from '../../../core/services/quotesService/quote-service';
@@ -16,10 +16,9 @@ export class QuoteListComponent implements OnInit {
   quotes: QuoteDto[] = [];
   message = '';
 
-  constructor(
-    private quoteService: QuoteService,
-    private router: Router
-  ) {}
+
+  private quoteService = inject(QuoteService);
+  private router = inject(Router);  
 
   ngOnInit(): void {
     this.loadQuotes();

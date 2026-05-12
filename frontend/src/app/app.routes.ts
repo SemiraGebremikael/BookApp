@@ -11,9 +11,7 @@ import { EditQuoteComponent } from './features/quotes/edit-quote-component/edit-
 
 
 export const routes: Routes = [
-
-
-   {
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,10 +15,8 @@ export class CreateQuoteComponent {
   isLoading = false;
   message = '';
 
-  constructor(
-    private quoteService: QuoteService,
-    private router: Router
-  ) {}
+    private quoteService = inject(QuoteService);
+    private router = inject(Router);
 
   submit() {
     if (!this.quoteText.trim()) {

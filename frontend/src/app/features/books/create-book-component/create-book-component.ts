@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BookService } from '../../../core/services/booksService/book-service';
@@ -22,10 +22,10 @@ export class CreateBookComponent {
   message = '';
   todayDate = new Date().toISOString().split('T')[0];
 
-  constructor(
-    private bookService: BookService,
-    private router: Router
-  ) {}
+
+  private bookService = inject(BookService);
+  private router = inject(Router);  
+
 
   submit() {
     if (!this.book.title || !this.book.author || !this.book.publishDate) {

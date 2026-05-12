@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuoteService } from '../../../core/services/quotesService/quote-service';
 
@@ -12,11 +12,12 @@ export class DeleteQuoteComponent {
   @Input() quoteId!: number;
   @Input() quoteText = '';
   @Output() deleted = new EventEmitter<number>();
+    private quoteService = inject(QuoteService);
+
 
   isDeleting = false;
   errorMessage = '';
 
-  constructor(private quoteService: QuoteService) {}
 
   remove() {
     if (!confirm(`Är du säker att du vill radera “${this.quoteText}”?`)) {

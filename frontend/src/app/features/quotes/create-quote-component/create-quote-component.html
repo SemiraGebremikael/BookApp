@@ -1,8 +1,6 @@
 <div class="container mt-4">
   <h3>+ Lägg till citat</h3>
-
   <div class="alert alert-info" *ngIf="message">{{ message }}</div>
-
   <form (ngSubmit)="submit()">
     <div class="mb-3">
       <label class="form-label">Citat</label>
@@ -14,7 +12,6 @@
         required
       ></textarea>
     </div>
-
     <button class="btn btn-success me-2" type="submit" [disabled]="isLoading">
       Spara
     </button>

@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BookService } from '../../../core/services/booksService/book-service';
 import { Router } from '@angular/router';
 import { BookDto } from '../../../core/models/books/book.dto';
@@ -16,11 +16,10 @@ import { DeleteBookComponent } from '../delete-book-component/delete-book-compon
 export class BookListComponent implements OnInit {
   books: BookDto[] = [];
   message = '';
+  
+  private bookService = inject(BookService);
+  private router = inject(Router);  
 
-  constructor(
-    private bookService: BookService,
-    private router: Router
-  ) {}
 
   ngOnInit() {
     this.loadBooks();
