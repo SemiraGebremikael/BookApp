@@ -23,6 +23,8 @@
   --shadow-lg: rgba(0, 0, 0, 0.15);
 }
 
+// DARK MODE
+
 html[data-theme='dark'] {
   color-scheme: dark;
   --bg: #0b1220;
@@ -52,7 +54,6 @@ body {
   line-height: 1.6;
 }
 
-/* Ensure theme colors are used by components that rely on .card styles */
 .card {
   background: var(--surface);
   border-color: var(--border);
@@ -72,6 +73,7 @@ body {
     --border: rgba(255, 255, 255, 0.12);
     --shadow: rgba(0, 0, 0, 0.45);
     --shadow-lg: rgba(0, 0, 0, 0.6);
+    
   }
 }
 
@@ -93,6 +95,11 @@ a {
 a:hover {
   color: var(--primary-hover);
   text-decoration: none;
+}
+
+
+.text-muted {
+  color: var(--muted) !important; 
 }
 
 ul {
@@ -350,7 +357,6 @@ p {
   }
 }
 
-/* Custom animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -376,7 +382,6 @@ p {
   transform: none !important;
 }
 
-/* Loading states */
 .btn.loading {
   position: relative;
   color: transparent;

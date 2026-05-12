@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
-import { AuthService } from '../../../core/services/authService/auth-services';
-import { ThemeToggleComponent } from '../../../features/theme/theme-toggle.component';
+import { ThemeToggleComponent } from '../../features/theme/theme-toggle.component';
+import { AuthService } from '../services/authService/auth-services';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, ThemeToggleComponent],
+  imports: [CommonModule, RouterLink, ThemeToggleComponent],
   templateUrl: './navbar-component.html',
   styleUrls: ['./navbar-component.scss'],
 })
@@ -25,5 +25,16 @@ export class NavbarComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+
+refreshPage() {
+
+  if (this.authService.isLoggedIn()) {
+    this.router.navigate(['/books']);
+  } else {
+    this.router.navigate(['/login']);
+  }
+}
+
 }
 

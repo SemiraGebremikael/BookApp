@@ -21,14 +21,19 @@
           <p class="text-muted small">
             Publicerad: {{ b.publishDate | date: 'yyyy-MM-dd' }}
           </p>
-          <button class="btn btn-warning me-2" (click)="edit(b.id)">
-            Redigera
-          </button>
-          <app-delete-book
-            [bookId]="b.id"
-            [bookTitle]="b.title"
-            (deleted)="handleDelete($event)">
-          </app-delete-book>
+          <div class="d-flex gap-2 mt-3">
+            <button
+              class="btn btn-warning btn-sm flex-fill w-50"
+              (click)="edit(b.id)">
+              Redigera
+            </button>
+            <app-delete-book
+              class="flex-fill"
+              [bookId]="b.id"
+              [bookTitle]="b.title"
+              (deleted)="handleDelete($event)">
+            </app-delete-book>
+          </div>
         </div>
       </div>
     </div>
