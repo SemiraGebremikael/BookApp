@@ -14,36 +14,36 @@ export class CreateQuoteComponent {
   quoteText = '';
   isLoading = false;
   message = '';
+  showWarning = false;
 
-    private quoteService = inject(QuoteService);
-    private router = inject(Router);
+  private quoteService = inject(QuoteService);
+  private router = inject(Router);
 
   submit() {
-    if (!this.quoteText.trim()) {
-      this.message = 'Vänligen fyll i citatet';
+    const text = this.quoteText.trim();
+    if (!text) {
+      this.showWarning = true;
+      this.message = '';
       return;
     }
-
+    this.showWarning = false;
     this.isLoading = true;
-
-    this.quoteService
-      .createQuote({ text: this.quoteText.trim() })
-      .subscribe({
-        next: () => {
-          this.message = 'Citat skapat!';
-          this.isLoading = false;
-          setTimeout(() => this.router.navigate(['/quotes']), 300);
-        },
-        error: (error: unknown) => {
-          console.error(error);
-          this.message = 'Fel vid skapande av citat';
-          this.isLoading = false;
-        },
-      });
+    this.quoteService.createQuote({ text }).subscribe({
+      next: () => {
+        this.message = 'Citat skapat!';
+        this.isLoading = false;
+        setTimeout(() => {
+          this.router.navigate(['/quotes']);
+        }, 400);
+      },
+      error: () => {
+        this.message = 'Fel vid skapande av citat';
+        this.isLoading = false;
+      }
+    });
   }
 
   cancel() {
     this.router.navigate(['/quotes']);
   }
 }
-
