@@ -355,6 +355,46 @@ p {
 }
 
 
+.card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.row {
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
 @media (prefers-color-scheme: dark) {
   html:not([data-theme]) {
     --bg: #0b1220;
@@ -424,39 +464,6 @@ p {
   }
 }
 
-.card {
-  animation: fadeIn 0.5s ease-out;
-}
-
-.btn {
-  cursor: pointer;
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none !important;
-}
-
-.btn.loading {
-  position: relative;
-  color: transparent;
-}
-
-.btn.loading::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  margin-left: -8px;
-  margin-top: -8px;
-  border: 2px solid transparent;
-  border-top-color: currentColor;
-  border-radius: 50%;
-  animation: spin 1s ease-in-out infinite;
-}
 
 @keyframes spin {
   to {

@@ -27,15 +27,17 @@ export class QuoteListComponent implements OnInit {
   loadQuotes() {
     this.quoteService.getAllQuotes().subscribe({
       next: (data: QuoteDto[]) => {
-        this.quotes = data.slice(0, 5);
+        this.quotes = data;        
         this.message = '';
-      },
+              },
       error: (error: unknown) => {
         console.error(error);
         this.message = 'Fel vid hämtning av citat';
       },
     });
   }
+
+
 
   edit(id: number) {
     this.router.navigate(['/quotes/edit', id]);

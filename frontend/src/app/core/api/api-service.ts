@@ -48,7 +48,9 @@ export class ApiService {
 
 
   getAllQuotes() {
-    return this.http.get<QuoteDto[]>(`${this.baseUrl}/quotes`);
+    const data =  this.http.get<QuoteDto[]>(`${this.baseUrl}/quotes`);
+    console.log(data);
+    return data;
   }
 
   createQuote(dto: CreateQuoteDto) {
