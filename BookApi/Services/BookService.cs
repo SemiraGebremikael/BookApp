@@ -31,7 +31,7 @@ public class BookService : IBookService
         {
             Title = dto.Title,
             Author = dto.Author,
-            PublishDate = dto.PublishDate
+            PublishDate = DateTime.UtcNow
         };
 
         await _repository.AddAsync(book);

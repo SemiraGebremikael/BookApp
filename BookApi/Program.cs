@@ -55,9 +55,10 @@ builder.Services.AddSwaggerGen(options =>
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(
+    options.UseNpgsql(
         builder.Configuration.GetConnectionString(
             "DefaultConnection")));
+
 
 builder.Services.AddAuthentication(
     JwtBearerDefaults.AuthenticationScheme)
@@ -70,7 +71,6 @@ builder.Services.AddAuthentication(
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-
             ValidIssuer =
                 builder.Configuration["Jwt:Issuer"],
 
@@ -106,18 +106,11 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 app.UseSwagger();
-
 app.UseSwaggerUI();
-
 app.UseCors("AllowAngular");
 
 
 app.UseAuthentication();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
-
-
 app.Run();
