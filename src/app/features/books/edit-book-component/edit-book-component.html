@@ -1,0 +1,69 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow p-4">
+        <h2 class="text-center mb-4">Redigera bok</h2>
+        <div *ngIf="message" class="alert" [ngClass]="message.includes('framgångsrikt') ? 'alert-success' : 'alert-danger'">
+            {{ message }}
+        </div>
+        <div *ngIf="isLoading && !book" class="text-center">
+            <p>Laddar...</p>
+        </div>
+
+        <form (ngSubmit)="submit()" *ngIf="book">
+            <div class="mb-3">
+            <label for="title" class="form-label">Titel *</label>
+            <input
+                id="title"
+                type="text"
+                class="form-control"
+                [(ngModel)]="book.title"
+                name="title"
+                placeholder="Ange bokens titel"
+                required>
+            </div>
+
+            <div class="mb-3">
+            <label for="author" class="form-label">Författare *</label>
+            <input
+                id="author"
+                type="text"
+                class="form-control"
+                [(ngModel)]="book.author"
+                name="author"
+                placeholder="Ange författarens namn"
+                required>
+            </div>
+
+            <div class="mb-3">
+            <label for="publishDate" class="form-label">Publiceringsdatum *</label>
+            <input
+                id="publishDate"
+                type="date"
+                class="form-control"
+                [(ngModel)]="book.publishDate"
+                name="publishDate"
+                [max]="todayDate"
+                required>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button
+                type="submit"
+                class="btn btn-primary flex-grow-1"
+                [disabled]="isLoading">
+                {{ isLoading ? 'Uppdaterar...' : 'Uppdatera bok' }}
+                </button>
+                <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="cancel()"
+                [disabled]="isLoading">
+                Avbryt
+                </button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>

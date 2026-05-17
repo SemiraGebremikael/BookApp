@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+      <div class="card shadow p-4 mt-5">
+        <h2 class="text-center mb-4">
+          Logga in
+        </h2>
+        <div *ngIf="message" class="alert alert-info mb-3">
+          {{ message }}
+        </div>
+        <input
+          class="form-control mb-3"
+          type="text"
+          placeholder="Användarnamn"
+          [(ngModel)]="model.name">
+        <input
+          class="form-control mb-3"
+          type="password"
+          placeholder="Lösenord"
+          [(ngModel)]="model.password">
+        <button
+          class="btn btn-primary w-100"
+          (click)="login()">
+          Logga in
+        </button>
+        <div class="text-center mt-3">
+          <span>
+            Har du inget konto?
+          </span>
+          <a
+            routerLink="/register"
+            class="ms-1 text-decoration-none">
+            Skapa konto
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

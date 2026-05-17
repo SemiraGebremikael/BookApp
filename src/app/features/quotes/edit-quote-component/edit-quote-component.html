@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h3>Redigera citat</h3>
+
+  <div class="alert alert-info" *ngIf="message">{{ message }}</div>
+
+  <div *ngIf="isLoading" class="mb-3">Laddar...</div>
+
+  <form *ngIf="quote" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label class="form-label">Citat</label>
+      <textarea
+        class="form-control"
+        rows="4"
+        [(ngModel)]="quote.text"
+        name="quoteText"
+        required
+      ></textarea>
+    </div>
+
+    <button class="btn btn-success me-2" type="submit" [disabled]="isLoading">
+      Spara ändringar
+    </button>
+    <button class="btn btn-secondary" type="button" (click)="cancel()">
+      Avbryt
+    </button>
+  </form>
+
+  <div *ngIf="!isLoading && !quote" class="text-danger">
+    Kunde inte hitta citatet.
+  </div>
+</div>
+
