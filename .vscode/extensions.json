@@ -1,4 +1,11 @@
 {
+<<<<<<< HEAD
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
   "recommendations": ["angular.ng-template"]
 }
+=======
+    "recommendations": [
+        "blackboxapp.blackbox"
+    ]
+}
+>>>>>>> 9c4bef366dcaa3e2b8ebf314bfbb33ecb3ba7ddb

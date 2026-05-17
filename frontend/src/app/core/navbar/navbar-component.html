@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg shadow-sm app-navbar">
+  <div class="container-fluid">
+    <a
+      class="navbar-brand d-flex align-items-center gap-2 fw-bold cursor-pointer"
+      (click)="refreshPage()">
+      <i class="fa-solid fa-book-open"></i>
+      BokAppen
+    </a>
+    <button class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link nav-pill"
+            routerLink="/login">
+            Logga in
+            <i class="fa-solid fa-right-to-bracket ms-1"></i>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link nav-pill"
+            routerLink="/books">
+            Böcker
+            <i class="fa-solid fa-book ms-1"></i>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link nav-pill"
+            routerLink="/quotes">
+            Mina citat
+            <i class="fa-solid fa-quote-left ms-1"></i>
+          </a>
+        </li>
+        <li class="nav-item ms-lg-2">
+          <app-theme-toggle></app-theme-toggle>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <button
+            class="btn btn-sm btn-outline-light ms-lg-2 px-3 rounded-pill"
+            (click)="logout()">
+            Logga ut
+            <i class="fa-solid fa-right-from-bracket ms-1"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
