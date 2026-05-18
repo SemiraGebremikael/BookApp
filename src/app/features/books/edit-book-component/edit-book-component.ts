@@ -50,26 +50,35 @@ this.bookService.getBookById(this.bookId)
 }
 
 submit() {
-if (!this.book || !this.book.title || !this.book.author || !this.book.publishDate) {
+  if (!this.book || !this.book.title || !this.book.author || !this.book.publishDate) {
     this.message = 'Vänligen fyll i alla fält';
     return;
-}
+  }
 
-this.isLoading = true;
-this.bookService.updateBook(this.bookId, this.book)
+  this.isLoading = true;
+
+  const updatedBook = {
+    ...this.book,
+    publishDate: new Date(this.book.publishDate).toISOString()
+  };
+
+  console.log(updatedBook);
+
+  this.bookService.updateBook(this.bookId, updatedBook)
     .subscribe({
-    next: () => {
+      next: () => {
         this.message = 'Bok uppdaterad framgångsrikt!';
         this.isLoading = false;
+
         setTimeout(() => {
-        this.router.navigate(['/books']);
+          this.router.navigate(['/books']);
         }, 500);
-    },
-    error: (error) => {
+      },
+      error: (error) => {
         console.error(error);
         this.message = 'Fel vid uppdatering av bok';
         this.isLoading = false;
-    }
+      }
     });
 }
 
