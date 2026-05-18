@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CreateQuoteDto, QuoteDto, UpdateQuoteDto } from '../models/quotes/quote.dto';
 import { RegisterDto } from '../models/auth/register.dto';
 import { LoginDto } from '../models/auth/LoginDto';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.prod';
 @Injectable({
   providedIn: 'root',
 })
