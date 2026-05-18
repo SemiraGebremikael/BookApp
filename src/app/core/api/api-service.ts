@@ -27,43 +27,43 @@ export class ApiService {
 
 
   getBooks() {
-    return this.http.get<BookDto[]>(`${environment.baseUrl}/books`);
+    return this.http.get<BookDto[]>(`${environment.apiUrl}/books`);
   }
 
   getBookById(id: number) {
-    return this.http.get<BookDto>(`${environment.baseUrl}/books/${id}`);
+    return this.http.get<BookDto>(`${environment.apiUrl}/books/${id}`);
   }
 
   createBook(data: BookDto) {
-    return this.http.post<BookDto>(`${environment.baseUrl}/books`, data);
+    return this.http.post<BookDto>(`${environment.apiUrl}/books`, data);
   }
 
   updateBook(id: number, data: BookDto) {
-    return this.http.put<BookDto>(`${environment.baseUrl}/books/${id}`, data);
+    return this.http.put<BookDto>(`${environment.apiUrl}/books/${id}`, data);
   }
 
   deleteBook(id: number) {
-    return this.http.delete(`${environment.baseUrl}/books/${id}`);
+    return this.http.delete(`${environment.apiUrl}/books/${id}`);
   }
   
 
 
   getAllQuotes() {
-    const data =  this.http.get<QuoteDto[]>(`${environment.baseUrl}/quotes`);
+    const data =  this.http.get<QuoteDto[]>(`${environment.apiUrl}/quotes`);
     console.log(data);
     return data;
   }
 
   createQuote(dto: CreateQuoteDto) {
-    return this.http.post<QuoteDto>(`${environment.baseUrl}/quotes`, dto);
+    return this.http.post<QuoteDto>(`${environment.apiUrl}/quotes`, dto);
   }
 
   updateQuote(id: number, dto: UpdateQuoteDto) {
-    return this.http.put<QuoteDto>(`${environment.baseUrl}/quotes/${id}`, dto);
+    return this.http.put<QuoteDto>(`${environment.apiUrl}/quotes/${id}`, dto);
   }
 
   deleteQuote(id: number) {
-    return this.http.delete(`${environment.baseUrl}/quotes/${id}`);
+    return this.http.delete(`${environment.apiUrl}/quotes/${id}`);
     }
 
 }
